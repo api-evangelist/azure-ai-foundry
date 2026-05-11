@@ -1,0 +1,63 @@
+aid: azure-ai-foundry
+name: Microsoft Azure AI Foundry
+description: >-
+  Microsoft Azure AI Foundry (formerly Azure AI Studio) is an end-to-end
+  platform for building, optimizing, evaluating, and governing AI applications
+  and agents at scale. It provides access to Foundry Models (including
+  Azure OpenAI and open-source models), the Foundry Agent Service, content
+  safety, observability, and responsible AI tooling. The Foundry REST APIs and
+  Azure SDKs use Microsoft Entra ID OAuth 2.0 bearer tokens or API keys for
+  authentication.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Artificial Intelligence
+  - Generative AI
+  - AI Agents
+  - Foundation Models
+  - Machine Learning
+  - Cloud
+  - Azure
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/azure-ai-foundry/refs/heads/main/apis.yml
+created: '2026-05-11'
+modified: '2026-05-11'
+specificationVersion: '0.19'
+apis:
+  - aid: azure-ai-foundry:foundry-api
+    name: Azure AI Foundry REST API
+    description: >-
+      REST API for managing Foundry projects, hubs, model deployments, agents,
+      threads, runs, and evaluations. Authentication uses Microsoft Entra ID
+      OAuth 2.0 bearer tokens (or API keys for inference endpoints) over
+      HTTPS.
+    humanURL: https://learn.microsoft.com/en-us/azure/ai-foundry/
+    baseURL: https://{your-resource-name}.services.ai.azure.com
+    tags:
+      - AI Foundry
+      - Agents
+      - Models
+      - Generative AI
+      - Azure
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/azure/ai-foundry/
+      - type: REST API Reference
+        url: https://learn.microsoft.com/en-us/rest/api/aifoundry/
+      - type: SDK Overview
+        url: https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/sdk-overview
+      - type: Portal
+        url: https://ai.azure.com/
+
+common:
+  - type: Website
+    url: https://azure.microsoft.com/en-us/products/ai-foundry/
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/azure/ai-foundry/
+  - type: Pricing
+    url: https://azure.microsoft.com/en-us/pricing/details/ai-foundry/
+  - type: Sign Up
+    url: https://azure.microsoft.com/en-us/free/
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
