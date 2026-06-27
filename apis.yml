@@ -58,9 +58,9 @@ common:
     url: https://learn.microsoft.com/en-us/azure/ai-foundry/
   - type: Pricing
     url: https://azure.microsoft.com/en-us/pricing/details/ai-foundry/
-  - type: SignUp
+  - type: Signup
     url: https://azure.microsoft.com/en-us/free/
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://ai.azure.com/llms.txt
 maintainers:
   - FN: Kin Lane
