@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/azure-ai-foundry-openapi.yml
+schemes:
+- name: entra
+  source: openapi/azure-ai-foundry-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+  description: Microsoft Entra ID OAuth 2.0 bearer token (scope https://ai.azure.com/.default)
+scopes:
+- scope: https://ai.azure.com/.default
+  description: Default Foundry inference scope
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/azure-ai-foundry-openapi.yml

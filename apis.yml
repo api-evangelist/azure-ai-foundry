@@ -50,6 +50,8 @@ apis:
         url: https://ai.azure.com/
 
 common:
+  - type: OAuthScopes
+    url: scopes/azure-ai-foundry-scopes.yml
   - type: GitHubOrganization
     url: https://github.com/azure-ai-foundry
   - type: Website
@@ -62,6 +64,8 @@ common:
     url: https://azure.microsoft.com/en-us/free/
   - type: LlmsText
     url: https://ai.azure.com/llms.txt
+  - url: https://azure.microsoft.com/en-us/blog/feed/atom/
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
