@@ -1,0 +1,140 @@
+openapi: 3.1.0
+info:
+  title: Azure AI Foundry Model Inference REST Chat Completions Embeddings API
+  version: '2024-10-21'
+  description: 'Data-plane REST API for running inference against models deployed in Microsoft
+
+    Azure AI Foundry (formerly Azure AI Studio). The endpoint exposes OpenAI-compatible
+
+    routes (`/chat/completions`, `/completions`, `/embeddings`) under the
+
+    `/openai/deployments/{deployment-id}` or `/openai/v1` path on a per-resource host.
+
+
+    Authentication uses either an API key (`api-key` header) or a Microsoft Entra ID
+
+    OAuth 2.0 bearer token (scope `https://ai.azure.com/.default`).
+
+    '
+  contact:
+    name: Microsoft Foundry
+    url: https://learn.microsoft.com/en-us/azure/ai-foundry/
+servers:
+- url: https://{resource}.services.ai.azure.com/openai
+  description: Foundry inference endpoint (per-resource)
+  variables:
+    resource:
+      default: my-foundry
+      description: Your Foundry resource name
+- url: https://{resource}.openai.azure.com/openai
+  description: Compatible Azure OpenAI endpoint exposed by the Foundry resource
+  variables:
+    resource:
+      default: my-foundry
+      description: Your Foundry resource name
+tags:
+- name: Embeddings
+  description: Vector embeddings for text
+paths:
+  /deployments/{deployment-id}/embeddings:
+    post:
+      summary: Create embeddings
+      operationId: createEmbeddings
+      tags:
+      - Embeddings
+      parameters:
+      - in: path
+        name: deployment-id
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: api-version
+        required: true
+        schema:
+          type: string
+          default: '2024-10-21'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - input
+              properties:
+                input:
+                  type:
+                  - string
+                  - array
+                user:
+                  type: string
+      responses:
+        '200':
+          description: Embeddings response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        embedding:
+                          type: array
+                          items:
+                            type: number
+                        index:
+                          type: integer
+      security:
+      - apiKey: []
+      - entra: []
+  /v1/embeddings:
+    post:
+      summary: Create embeddings (OpenAI v1-compatible route)
+      operationId: createEmbeddingsV1
+      tags:
+      - Embeddings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - model
+              - input
+              properties:
+                model:
+                  type: string
+                input:
+                  type:
+                  - string
+                  - array
+      responses:
+        '200':
+          description: Embeddings response
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - entra: []
+      - apiKey: []
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: api-key
+      description: Foundry/Azure OpenAI resource API key
+    entra:
+      type: oauth2
+      description: Microsoft Entra ID OAuth 2.0 bearer token (scope https://ai.azure.com/.default)
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes:
+            https://ai.azure.com/.default: Default Foundry inference scope

@@ -1,0 +1,102 @@
+openapi: 3.1.0
+info:
+  title: Azure AI Foundry Model Inference REST Chat Completions API
+  version: '2024-10-21'
+  description: 'Data-plane REST API for running inference against models deployed in Microsoft
+
+    Azure AI Foundry (formerly Azure AI Studio). The endpoint exposes OpenAI-compatible
+
+    routes (`/chat/completions`, `/completions`, `/embeddings`) under the
+
+    `/openai/deployments/{deployment-id}` or `/openai/v1` path on a per-resource host.
+
+
+    Authentication uses either an API key (`api-key` header) or a Microsoft Entra ID
+
+    OAuth 2.0 bearer token (scope `https://ai.azure.com/.default`).
+
+    '
+  contact:
+    name: Microsoft Foundry
+    url: https://learn.microsoft.com/en-us/azure/ai-foundry/
+servers:
+- url: https://{resource}.services.ai.azure.com/openai
+  description: Foundry inference endpoint (per-resource)
+  variables:
+    resource:
+      default: my-foundry
+      description: Your Foundry resource name
+- url: https://{resource}.openai.azure.com/openai
+  description: Compatible Azure OpenAI endpoint exposed by the Foundry resource
+  variables:
+    resource:
+      default: my-foundry
+      description: Your Foundry resource name
+tags:
+- name: Completions
+  description: Plain text completions
+paths:
+  /deployments/{deployment-id}/completions:
+    post:
+      summary: Create a text completion
+      operationId: createCompletion
+      tags:
+      - Completions
+      parameters:
+      - in: path
+        name: deployment-id
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: api-version
+        required: true
+        schema:
+          type: string
+          default: '2024-10-21'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                prompt:
+                  type:
+                  - string
+                  - array
+                max_tokens:
+                  type: integer
+                temperature:
+                  type: number
+                top_p:
+                  type: number
+                n:
+                  type: integer
+                stream:
+                  type: boolean
+      responses:
+        '200':
+          description: Completion response
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - apiKey: []
+      - entra: []
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: api-key
+      description: Foundry/Azure OpenAI resource API key
+    entra:
+      type: oauth2
+      description: Microsoft Entra ID OAuth 2.0 bearer token (scope https://ai.azure.com/.default)
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes:
+            https://ai.azure.com/.default: Default Foundry inference scope

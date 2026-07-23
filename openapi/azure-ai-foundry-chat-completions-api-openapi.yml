@@ -1,0 +1,201 @@
+openapi: 3.1.0
+info:
+  title: Azure AI Foundry Model Inference REST Chat Completions API
+  version: '2024-10-21'
+  description: 'Data-plane REST API for running inference against models deployed in Microsoft
+
+    Azure AI Foundry (formerly Azure AI Studio). The endpoint exposes OpenAI-compatible
+
+    routes (`/chat/completions`, `/completions`, `/embeddings`) under the
+
+    `/openai/deployments/{deployment-id}` or `/openai/v1` path on a per-resource host.
+
+
+    Authentication uses either an API key (`api-key` header) or a Microsoft Entra ID
+
+    OAuth 2.0 bearer token (scope `https://ai.azure.com/.default`).
+
+    '
+  contact:
+    name: Microsoft Foundry
+    url: https://learn.microsoft.com/en-us/azure/ai-foundry/
+servers:
+- url: https://{resource}.services.ai.azure.com/openai
+  description: Foundry inference endpoint (per-resource)
+  variables:
+    resource:
+      default: my-foundry
+      description: Your Foundry resource name
+- url: https://{resource}.openai.azure.com/openai
+  description: Compatible Azure OpenAI endpoint exposed by the Foundry resource
+  variables:
+    resource:
+      default: my-foundry
+      description: Your Foundry resource name
+tags:
+- name: Chat Completions
+  description: Chat-formatted text generation
+paths:
+  /deployments/{deployment-id}/chat/completions:
+    post:
+      summary: Create a chat completion
+      operationId: createChatCompletion
+      tags:
+      - Chat Completions
+      parameters:
+      - in: path
+        name: deployment-id
+        required: true
+        schema:
+          type: string
+        description: Foundry deployment name
+      - in: query
+        name: api-version
+        required: true
+        schema:
+          type: string
+          default: '2024-10-21'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatCompletionRequest'
+      responses:
+        '200':
+          description: Chat completion response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatCompletionResponse'
+      security:
+      - apiKey: []
+      - entra: []
+  /v1/chat/completions:
+    post:
+      summary: Create a chat completion (OpenAI v1-compatible route)
+      description: 'OpenAI-compatible route. The model deployment is selected by the `model`
+
+        field in the request body rather than the URL path.
+
+        '
+      operationId: createChatCompletionV1
+      tags:
+      - Chat Completions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatCompletionRequest'
+      responses:
+        '200':
+          description: Chat completion response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatCompletionResponse'
+      security:
+      - entra: []
+      - apiKey: []
+components:
+  schemas:
+    ChatCompletionRequest:
+      type: object
+      required:
+      - messages
+      properties:
+        model:
+          type: string
+          description: Deployment name (for v1 route)
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatMessage'
+        temperature:
+          type: number
+        top_p:
+          type: number
+        n:
+          type: integer
+        stream:
+          type: boolean
+        max_tokens:
+          type: integer
+        max_completion_tokens:
+          type: integer
+        stop:
+          type:
+          - string
+          - array
+        presence_penalty:
+          type: number
+        frequency_penalty:
+          type: number
+        user:
+          type: string
+    ChatCompletionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        created:
+          type: integer
+        model:
+          type: string
+        choices:
+          type: array
+          items:
+            type: object
+            properties:
+              index:
+                type: integer
+              message:
+                $ref: '#/components/schemas/ChatMessage'
+              finish_reason:
+                type: string
+        usage:
+          type: object
+          properties:
+            prompt_tokens:
+              type: integer
+            completion_tokens:
+              type: integer
+            total_tokens:
+              type: integer
+    ChatMessage:
+      type: object
+      required:
+      - role
+      properties:
+        role:
+          type: string
+          enum:
+          - system
+          - user
+          - assistant
+          - tool
+          - developer
+        content:
+          type:
+          - string
+          - array
+          - 'null'
+        name:
+          type: string
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: api-key
+      description: Foundry/Azure OpenAI resource API key
+    entra:
+      type: oauth2
+      description: Microsoft Entra ID OAuth 2.0 bearer token (scope https://ai.azure.com/.default)
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes:
+            https://ai.azure.com/.default: Default Foundry inference scope
