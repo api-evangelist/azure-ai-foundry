@@ -9,7 +9,19 @@ description: >-
   Azure SDKs use Microsoft Entra ID OAuth 2.0 bearer tokens or API keys for
   authentication.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/azure-ai-foundry.png
 tags:
   - Artificial Intelligence
   - Generative AI
@@ -24,31 +36,79 @@ created: '2026-05-11'
 modified: '2026-05-11'
 specificationVersion: '0.19'
 apis:
-  - aid: azure-ai-foundry:foundry-api
-    name: Azure AI Foundry REST API
-    description: >-
-      REST API for managing Foundry projects, hubs, model deployments, agents,
-      threads, runs, and evaluations. Authentication uses Microsoft Entra ID
-      OAuth 2.0 bearer tokens (or API keys for inference endpoints) over
-      HTTPS.
-    humanURL: https://learn.microsoft.com/en-us/azure/ai-foundry/
-    baseURL: https://{your-resource-name}.services.ai.azure.com
-    tags:
-      - AI Foundry
-      - Agents
-      - Models
-      - Generative AI
-      - Azure
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/azure/ai-foundry/
-      - type: REST API Reference
-        url: https://learn.microsoft.com/en-us/rest/api/aifoundry/
-      - type: SDK Overview
-        url: https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/sdk-overview
-      - type: Portal
-        url: https://ai.azure.com/
-
+- aid: azure-ai-foundry:foundry-api
+  name: Azure AI Foundry REST API
+  description: >-
+    REST API for managing Foundry projects, hubs, model deployments, agents, threads, runs, and evaluations.
+    Authentication uses Microsoft Entra ID OAuth 2.0 bearer tokens (or API keys for inference endpoints)
+    over HTTPS.
+  humanURL: https://learn.microsoft.com/en-us/azure/ai-foundry/
+  baseURL: https://{your-resource-name}.services.ai.azure.com
+  tags:
+  - AI Foundry
+  - Agents
+  - Models
+  - Generative AI
+  - Azure
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/azure/ai-foundry/
+  - type: REST API Reference
+    url: https://learn.microsoft.com/en-us/rest/api/aifoundry/
+  - type: SDK Overview
+    url: https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/sdk-overview
+  - type: Portal
+    url: https://ai.azure.com/
+- aid: azure-ai-foundry:azure-ai-foundry-chat-completions-api
+  name: Microsoft Azure AI Foundry Chat Completions API
+  description: Chat-formatted text generation
+  humanURL: https://learn.microsoft.com/en-us/azure/ai-foundry/
+  baseURL: https://{your-resource-name}.services.ai.azure.com
+  tags:
+  - Chat Completions
+  properties:
+  - type: OpenAPI
+    url: openapi/azure-ai-foundry-chat-completions-api-openapi.yml
+- aid: azure-ai-foundry:azure-ai-foundry-completions-api
+  name: Microsoft Azure AI Foundry Completions API
+  description: Plain text completions
+  humanURL: https://learn.microsoft.com/en-us/azure/ai-foundry/
+  baseURL: https://{your-resource-name}.services.ai.azure.com
+  tags:
+  - Completions
+  properties:
+  - type: OpenAPI
+    url: openapi/azure-ai-foundry-completions-api-openapi.yml
+- aid: azure-ai-foundry:azure-ai-foundry-embeddings-api
+  name: Microsoft Azure AI Foundry Embeddings API
+  description: Vector embeddings for text
+  humanURL: https://learn.microsoft.com/en-us/azure/ai-foundry/
+  baseURL: https://{your-resource-name}.services.ai.azure.com
+  tags:
+  - Embeddings
+  properties:
+  - type: OpenAPI
+    url: openapi/azure-ai-foundry-embeddings-api-openapi.yml
+- aid: azure-ai-foundry:azure-ai-foundry-images-api
+  name: Microsoft Azure AI Foundry Images API
+  description: Image generation
+  humanURL: https://learn.microsoft.com/en-us/azure/ai-foundry/
+  baseURL: https://{your-resource-name}.services.ai.azure.com
+  tags:
+  - Images
+  properties:
+  - type: OpenAPI
+    url: openapi/azure-ai-foundry-images-api-openapi.yml
+- aid: azure-ai-foundry:azure-ai-foundry-models-api
+  name: Microsoft Azure AI Foundry Models API
+  description: Model and deployment metadata
+  humanURL: https://learn.microsoft.com/en-us/azure/ai-foundry/
+  baseURL: https://{your-resource-name}.services.ai.azure.com
+  tags:
+  - Models
+  properties:
+  - type: OpenAPI
+    url: openapi/azure-ai-foundry-models-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/azure-ai-foundry-agentic-access.yml
