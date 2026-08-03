@@ -1,0 +1,22 @@
+{
+  "provider": "azure-ai-foundry",
+  "sources": [
+    "azure-ai-foundry-chat-completions-api-openapi.yml",
+    "azure-ai-foundry-completions-api-openapi.yml",
+    "azure-ai-foundry-embeddings-api-openapi.yml",
+    "azure-ai-foundry-images-api-openapi.yml",
+    "azure-ai-foundry-models-api-openapi.yml"
+  ],
+  "outputs": [
+    "azure-ai-foundry-chat-completions-api-openapi.yml",
+    "azure-ai-foundry-completions-api-openapi.yml",
+    "azure-ai-foundry-embeddings-api-openapi.yml",
+    "azure-ai-foundry-images-api-openapi.yml",
+    "azure-ai-foundry-models-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
