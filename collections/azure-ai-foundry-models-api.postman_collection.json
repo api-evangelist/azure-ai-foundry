@@ -1,0 +1,157 @@
+{
+  "item": [
+    {
+      "id": "83514083-5eab-4a48-81c9-87c92c530697",
+      "name": "Models",
+      "description": {
+        "content": "Model and deployment metadata",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ecd21f49-2bfe-4992-ba3d-2cc166c4233c",
+          "name": "List available models",
+          "request": {
+            "name": "List available models",
+            "description": {},
+            "url": {
+              "path": [
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2024-10-21"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Foundry resource name",
+                  "type": "any",
+                  "value": "{{resource}}",
+                  "key": "resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "257e9109-5426-4de1-807f-0a506d3e40a8",
+              "name": "Models available on the resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2024-10-21"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Foundry resource name",
+                      "type": "any",
+                      "value": "{{resource}}",
+                      "key": "resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Foundry resource name",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "my-foundry",
+      "key": "resource"
+    },
+    {
+      "type": "string",
+      "value": "https://{{resource}}.services.ai.azure.com/openai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "71096600-1d18-4d31-8c68-3a41179c0d8d",
+    "name": "Azure AI Foundry Model Inference REST Chat Completions Models API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Data-plane REST API for running inference against models deployed in Microsoft\nAzure AI Foundry (formerly Azure AI Studio). The endpoint exposes OpenAI-compatible\nroutes (`/chat/completions`, `/completions`, `/embeddings`) under the\n`/openai/deployments/{deployment-id}` or `/openai/v1` path on a per-resource host.\n\nAuthentication uses either an API key (`api-key` header) or a Microsoft Entra ID\nOAuth 2.0 bearer token (scope `https://ai.azure.com/.default`).\n\n\nContact Support:\n Name: Microsoft Foundry",
+      "type": "text/plain"
+    }
+  }
+}

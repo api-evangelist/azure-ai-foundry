@@ -1,0 +1,199 @@
+{
+  "item": [
+    {
+      "id": "d779171a-69f3-4616-b886-e8dacf0fa11f",
+      "name": "Images",
+      "description": {
+        "content": "Image generation",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7dd2e086-eccf-4a6f-baa2-edc0abc5d495",
+          "name": "Generate images",
+          "request": {
+            "name": "Generate images",
+            "description": {},
+            "url": {
+              "path": [
+                "deployments",
+                ":deployment-id",
+                "images",
+                "generations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2024-10-21",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deployment-id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Foundry resource name",
+                  "type": "any",
+                  "value": "{{resource}}",
+                  "key": "resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prompt\": \"<string>\",\n  \"n\": \"<integer>\",\n  \"size\": \"<string>\",\n  \"response_format\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a691ecd7-5d8a-413e-9c26-dde05c31df6b",
+              "name": "Image generation response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deployments",
+                    ":deployment-id",
+                    "images",
+                    "generations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2024-10-21"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deployment-id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Foundry resource name",
+                      "type": "any",
+                      "value": "{{resource}}",
+                      "key": "resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prompt\": \"<string>\",\n  \"n\": \"<integer>\",\n  \"size\": \"<string>\",\n  \"response_format\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Foundry resource name",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "my-foundry",
+      "key": "resource"
+    },
+    {
+      "type": "string",
+      "value": "https://{{resource}}.services.ai.azure.com/openai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f6b5d5d3-d330-4ba7-87d5-9ac75dff1403",
+    "name": "Azure AI Foundry Model Inference REST Chat Completions Images API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Data-plane REST API for running inference against models deployed in Microsoft\nAzure AI Foundry (formerly Azure AI Studio). The endpoint exposes OpenAI-compatible\nroutes (`/chat/completions`, `/completions`, `/embeddings`) under the\n`/openai/deployments/{deployment-id}` or `/openai/v1` path on a per-resource host.\n\nAuthentication uses either an API key (`api-key` header) or a Microsoft Entra ID\nOAuth 2.0 bearer token (scope `https://ai.azure.com/.default`).\n\n\nContact Support:\n Name: Microsoft Foundry",
+      "type": "text/plain"
+    }
+  }
+}

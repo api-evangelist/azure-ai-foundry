@@ -1,0 +1,325 @@
+{
+  "item": [
+    {
+      "id": "3a5e3e98-b5cb-44cf-ab53-25df30f50628",
+      "name": "Embeddings",
+      "description": {
+        "content": "Vector embeddings for text",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bc2e7869-206a-4c8b-8aab-e5a7da652285",
+          "name": "Create embeddings",
+          "request": {
+            "name": "Create embeddings",
+            "description": {},
+            "url": {
+              "path": [
+                "deployments",
+                ":deployment-id",
+                "embeddings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "2024-10-21",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deployment-id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Your Foundry resource name",
+                  "type": "any",
+                  "value": "{{resource}}",
+                  "key": "resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"input\": \"<string,array>\",\n  \"user\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d8cb805a-26f2-4d7c-8b59-f023a0d246b2",
+              "name": "Embeddings response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deployments",
+                    ":deployment-id",
+                    "embeddings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "2024-10-21"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deployment-id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Your Foundry resource name",
+                      "type": "any",
+                      "value": "{{resource}}",
+                      "key": "resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": \"<string,array>\",\n  \"user\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"embedding\": [\n        3642.4823892411405,\n        3174.437923679815\n      ],\n      \"index\": 8392\n    },\n    {\n      \"embedding\": [\n        906.8076994848606,\n        1842.9311851184304\n      ],\n      \"index\": 8328\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "620abe7c-56c4-43ee-bc20-510eaf6ca556",
+          "name": "Create embeddings (OpenAI v1-compatible route)",
+          "request": {
+            "name": "Create embeddings (OpenAI v1-compatible route)",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "embeddings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Foundry resource name",
+                  "type": "any",
+                  "value": "{{resource}}",
+                  "key": "resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "https://ai.azure.com/.default"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://login.microsoftonline.com/common/oauth2/v2.0/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string,array>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ab1edb6d-29c2-482c-ab8c-d72e2fe03fb7",
+              "name": "Embeddings response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "embeddings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Foundry resource name",
+                      "type": "any",
+                      "value": "{{resource}}",
+                      "key": "resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string,array>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Foundry resource name",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "my-foundry",
+      "key": "resource"
+    },
+    {
+      "type": "string",
+      "value": "https://{{resource}}.services.ai.azure.com/openai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "719c64c8-3292-40d0-826c-30a7d45d8831",
+    "name": "Azure AI Foundry Model Inference REST Chat Completions Embeddings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Data-plane REST API for running inference against models deployed in Microsoft\nAzure AI Foundry (formerly Azure AI Studio). The endpoint exposes OpenAI-compatible\nroutes (`/chat/completions`, `/completions`, `/embeddings`) under the\n`/openai/deployments/{deployment-id}` or `/openai/v1` path on a per-resource host.\n\nAuthentication uses either an API key (`api-key` header) or a Microsoft Entra ID\nOAuth 2.0 bearer token (scope `https://ai.azure.com/.default`).\n\n\nContact Support:\n Name: Microsoft Foundry",
+      "type": "text/plain"
+    }
+  }
+}
