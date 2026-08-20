@@ -27,6 +27,14 @@ tags:
   - Generative AI
   - AI Agents
   - Foundation Models
+  - Machine-Learning
+  - Cloud
+  - Azure
+tags_raw:
+  - Artificial Intelligence
+  - Generative AI
+  - AI Agents
+  - Foundation Models
   - Machine Learning
   - Cloud
   - Azure
@@ -95,6 +103,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/azure/ai-foundry/
   baseURL: https://{your-resource-name}.services.ai.azure.com
   tags:
+  - Image
+  tags_raw:
   - Images
   properties:
   - type: OpenAPI
