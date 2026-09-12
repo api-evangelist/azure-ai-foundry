@@ -43,7 +43,7 @@ tags_raw:
 - Machine Learning
 - Cloud
 - Azure
-url: https://raw.githubusercontent.com/api-evangelist/azure-ai-foundry/refs/heads/main/apis.yml
+url: https://azure.microsoft.com/en-us/products/ai-foundry/
 created: '2026-05-11'
 modified: '2026-05-11'
 specificationVersion: '0.23'
