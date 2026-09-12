@@ -1,13 +1,6 @@
 aid: azure-ai-foundry
 name: Microsoft Azure AI Foundry
-description: >-
-  Microsoft Azure AI Foundry (formerly Azure AI Studio) is an end-to-end
-  platform for building, optimizing, evaluating, and governing AI applications
-  and agents at scale. It provides access to Foundry Models (including
-  Azure OpenAI and open-source models), the Foundry Agent Service, content
-  safety, observability, and responsible AI tooling. The Foundry REST APIs and
-  Azure SDKs use Microsoft Entra ID OAuth 2.0 bearer tokens or API keys for
-  authentication.
+description: Microsoft Azure AI Foundry (formerly Azure AI Studio) is an end-to-end platform for building, optimizing, evaluating, and governing AI applications and agents at scale. It provides access to Foundry Models (including Azure OpenAI and open-source models), the Foundry Agent Service, content safety, observability, and responsible AI tooling. The Foundry REST APIs and Azure SDKs use Microsoft Entra ID OAuth 2.0 bearer tokens or API keys for authentication.
 type: Index
 deliveryModel:
   model: saas
@@ -35,33 +28,29 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/azure-ai-foundry.png
 tags:
-  - Artificial Intelligence
-  - Generative AI
-  - AI Agents
-  - Foundation Models
-  - Machine-Learning
-  - Cloud
-  - Azure
+- Artificial Intelligence
+- Generative AI
+- AI Agents
+- Foundation Models
+- Machine-Learning
+- Cloud
+- Azure
 tags_raw:
-  - Artificial Intelligence
-  - Generative AI
-  - AI Agents
-  - Foundation Models
-  - Machine Learning
-  - Cloud
-  - Azure
-url: >-
-  https://raw.githubusercontent.com/api-evangelist/azure-ai-foundry/refs/heads/main/apis.yml
+- Artificial Intelligence
+- Generative AI
+- AI Agents
+- Foundation Models
+- Machine Learning
+- Cloud
+- Azure
+url: https://raw.githubusercontent.com/api-evangelist/azure-ai-foundry/refs/heads/main/apis.yml
 created: '2026-05-11'
 modified: '2026-05-11'
 specificationVersion: '0.23'
 apis:
 - aid: azure-ai-foundry:foundry-api
   name: Azure AI Foundry REST API
-  description: >-
-    REST API for managing Foundry projects, hubs, model deployments, agents, threads, runs, and evaluations.
-    Authentication uses Microsoft Entra ID OAuth 2.0 bearer tokens (or API keys for inference endpoints)
-    over HTTPS.
+  description: REST API for managing Foundry projects, hubs, model deployments, agents, threads, runs, and evaluations. Authentication uses Microsoft Entra ID OAuth 2.0 bearer tokens (or API keys for inference endpoints) over HTTPS.
   humanURL: https://learn.microsoft.com/en-us/azure/ai-foundry/
   baseURL: https://{your-resource-name}.services.ai.azure.com
   tags:
@@ -131,33 +120,82 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/azure-ai-foundry-models-api-openapi.yml
-common:
-  - type: AgenticAccess
-    url: agentic-access/azure-ai-foundry-agentic-access.yml
-  - type: VulnerabilityDisclosure
-    url: security/azure-ai-foundry-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/azure-ai-foundry-domain-security.yml
-  - type: Authentication
-    url: authentication/azure-ai-foundry-authentication.yml
-  - type: OAuthScopes
-    url: scopes/azure-ai-foundry-scopes.yml
-  - type: GitHubOrganization
-    url: https://github.com/azure-ai-foundry
-  - type: Website
-    url: https://azure.microsoft.com/en-us/products/ai-foundry/
+- aid: microsoft-azure-ai-foundry:microsoft-azure-ai-foundry-operations-api
+  name: Microsoft Azure AI Foundry Operations API
+  description: Operations operations
+  humanURL: https://learn.microsoft.com/en-us/rest/api/azureml/
+  baseURL: https://management.azure.com/
+  tags: []
+  tags_raw:
+  - Operations
+  properties:
+  - type: OpenAPI
+    url: openapi/azure-ai-foundry-operations-api-openapi.yml
   - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/azureml/
+  - type: APIReference
     url: https://learn.microsoft.com/en-us/azure/ai-foundry/
-  - type: Pricing
-    url: https://azure.microsoft.com/en-us/pricing/details/ai-foundry/
-  - type: Signup
-    url: https://azure.microsoft.com/en-us/free/
-  - type: LlmsText
-    url: https://ai.azure.com/llms.txt
-  - url: https://azure.microsoft.com/en-us/blog/feed/atom/
-    type: Blog
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/rbac-azure-ai-foundry
+  - type: SDKs
+    url: https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/ai
+- aid: microsoft-azure-ai-foundry:microsoft-azure-ai-foundry-workspaces-api
+  name: Microsoft Azure AI Foundry Workspaces API
+  description: Workspaces operations
+  humanURL: https://learn.microsoft.com/en-us/rest/api/azureml/
+  baseURL: https://management.azure.com/
+  tags:
+  - Workspaces
+  properties:
+  - type: OpenAPI
+    url: openapi/azure-ai-foundry-workspaces-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/azureml/
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/azure/ai-foundry/
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/rbac-azure-ai-foundry
+  - type: SDKs
+    url: https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/ai
+common:
+- type: Portal
+  url: https://portal.azure.com/
+- type: TermsOfService
+  url: https://www.microsoft.com/en-us/legal/terms-of-use
+- type: PrivacyPolicy
+  url: https://privacy.microsoft.com/en-us/privacystatement
+- type: Support
+  url: https://support.microsoft.com/
+- type: StatusPage
+  url: https://status.azure.com/
+- type: MCPServer
+  url: https://github.com/Azure/ai-foundry-isv-mcp-agent
+- type: AgenticAccess
+  url: agentic-access/azure-ai-foundry-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/azure-ai-foundry-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/azure-ai-foundry-domain-security.yml
+- type: Authentication
+  url: authentication/azure-ai-foundry-authentication.yml
+- type: OAuthScopes
+  url: scopes/azure-ai-foundry-scopes.yml
+- type: GitHubOrganization
+  url: https://github.com/azure-ai-foundry
+- type: Website
+  url: https://azure.microsoft.com/en-us/products/ai-foundry/
+- type: Documentation
+  url: https://learn.microsoft.com/en-us/azure/ai-foundry/
+- type: Pricing
+  url: https://azure.microsoft.com/en-us/pricing/details/ai-foundry/
+- type: Signup
+  url: https://azure.microsoft.com/en-us/free/
+- type: LlmsText
+  url: https://ai.azure.com/llms.txt
+- url: https://azure.microsoft.com/en-us/blog/feed/atom/
+  type: Blog
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
 x-parent: microsoft-azure
 x-relationship: product
