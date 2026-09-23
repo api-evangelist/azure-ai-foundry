@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Azure AI Foundry Model Inference REST Chat Completions Embeddings API
+  title: Azure AI Foundry Model Inference REST Embeddings API
   version: '2024-10-21'
   description: 'Data-plane REST API for running inference against models deployed in Microsoft
 
@@ -13,9 +13,7 @@ info:
 
     Authentication uses either an API key (`api-key` header) or a Microsoft Entra ID
 
-    OAuth 2.0 bearer token (scope `https://ai.azure.com/.default`).
-
-    '
+    OAuth 2.0 bearer token (scope `https://ai.azure.com/.default`).'
   contact:
     name: Microsoft Foundry
     url: https://learn.microsoft.com/en-us/azure/ai-foundry/

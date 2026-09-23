@@ -13,9 +13,7 @@ info:
 
     Authentication uses either an API key (`api-key` header) or a Microsoft Entra ID
 
-    OAuth 2.0 bearer token (scope `https://ai.azure.com/.default`).
-
-    '
+    OAuth 2.0 bearer token (scope `https://ai.azure.com/.default`).'
   contact:
     name: Microsoft Foundry
     url: https://learn.microsoft.com/en-us/azure/ai-foundry/
@@ -76,9 +74,7 @@ paths:
       summary: Create a chat completion (OpenAI v1-compatible route)
       description: 'OpenAI-compatible route. The model deployment is selected by the `model`
 
-        field in the request body rather than the URL path.
-
-        '
+        field in the request body rather than the URL path.'
       operationId: createChatCompletionV1
       tags:
       - Chat Completions
@@ -100,37 +96,6 @@ paths:
       - apiKey: []
 components:
   schemas:
-    ChatCompletionResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        object:
-          type: string
-        created:
-          type: integer
-        model:
-          type: string
-        choices:
-          type: array
-          items:
-            type: object
-            properties:
-              index:
-                type: integer
-              message:
-                $ref: '#/components/schemas/ChatMessage'
-              finish_reason:
-                type: string
-        usage:
-          type: object
-          properties:
-            prompt_tokens:
-              type: integer
-            completion_tokens:
-              type: integer
-            total_tokens:
-              type: integer
     ChatCompletionRequest:
       type: object
       required:
@@ -185,6 +150,37 @@ components:
           - 'null'
         name:
           type: string
+    ChatCompletionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        created:
+          type: integer
+        model:
+          type: string
+        choices:
+          type: array
+          items:
+            type: object
+            properties:
+              index:
+                type: integer
+              message:
+                $ref: '#/components/schemas/ChatMessage'
+              finish_reason:
+                type: string
+        usage:
+          type: object
+          properties:
+            prompt_tokens:
+              type: integer
+            completion_tokens:
+              type: integer
+            total_tokens:
+              type: integer
   securitySchemes:
     apiKey:
       type: apiKey

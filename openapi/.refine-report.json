@@ -1,29 +1,35 @@
 {
   "provider": "azure-ai-foundry",
   "sources": [
-    "azure-ai-foundry-chat-completions-api-openapi.yml",
-    "azure-ai-foundry-completions-api-openapi.yml",
-    "azure-ai-foundry-embeddings-api-openapi.yml",
-    "azure-ai-foundry-images-api-openapi.yml",
-    "azure-ai-foundry-models-api-openapi.yml"
+    "_original/azure-ai-foundry-openapi.yml",
+    "azure-ai-foundry-operations-api-openapi.yml",
+    "azure-ai-foundry-workspaces-api-openapi.yml"
   ],
   "outputs": [
     "azure-ai-foundry-chat-completions-api-openapi.yml",
     "azure-ai-foundry-completions-api-openapi.yml",
     "azure-ai-foundry-embeddings-api-openapi.yml",
     "azure-ai-foundry-images-api-openapi.yml",
-    "azure-ai-foundry-models-api-openapi.yml"
+    "azure-ai-foundry-models-api-openapi.yml",
+    "azure-ai-foundry-operations-api-openapi.yml",
+    "azure-ai-foundry-workspaces-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
-  "warnings": [],
+  "warnings": [
+    "azure-ai-foundry-operations-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /providers/Microsoft.MachineLearningServices/operations get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "azure-ai-foundry-workspaces-api-openapi.yml: previously refined output kept for 6 operation(s) no archived document covers (e.g. /subscriptions/{subscriptionId}/providers/Microsoft.MachineLearningServices/workspaces get, /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces get, /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{name} delete); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
+  ],
   "notes": [
-    "azure-ai-foundry-chat-completions-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "azure-ai-foundry-completions-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "azure-ai-foundry-embeddings-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "azure-ai-foundry-images-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "azure-ai-foundry-models-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "azure-ai-foundry-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "azure-ai-foundry-chat-completions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "azure-ai-foundry-completions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "azure-ai-foundry-embeddings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "azure-ai-foundry-images-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "azure-ai-foundry-models-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
