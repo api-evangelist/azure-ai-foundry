@@ -32,9 +32,10 @@ tags:
 - Generative AI
 - AI Agents
 - Foundation Models
-- Machine-Learning
+- Machine Learning
 - Cloud
 - Azure
+- A2A
 tags_raw:
 - Artificial Intelligence
 - Generative AI
@@ -43,6 +44,8 @@ tags_raw:
 - Machine Learning
 - Cloud
 - Azure
+- Machine-Learning
+- A2A
 url: https://azure.microsoft.com/en-us/products/ai-foundry/
 created: '2026-05-11'
 modified: '2026-05-11'
