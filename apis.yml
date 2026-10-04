@@ -163,6 +163,9 @@ apis:
   - type: SDKs
     url: https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/ai
 common:
+- type: CapabilityMap
+  url: capabilities/azure-ai-foundry-capability-edges.yml
+  name: Microsoft Azure AI Foundry Business Capability Map
 - type: Portal
   url: https://portal.azure.com/
 - type: TermsOfService

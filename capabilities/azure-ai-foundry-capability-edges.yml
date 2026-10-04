@@ -1,0 +1,58 @@
+slug: azure-ai-foundry
+provider: Microsoft Azure AI Foundry
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Chat Completions
+  spec_file: azure-ai-foundry-chat-completions-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.75
+  evidence: POST /deployments/{deployment-id}/chat/completions — "Create a chat completion"; "Data-plane
+    REST API for running inference against models deployed in Microsoft Azure AI Foundry"
+  reason: The operations invoke deployed generative AI models for inference, which is the serving/consumption
+    leg of the AI/ML model lifecycle. Artificial Intelligence Management is the closest honest fit; confidence
+    tempered because the surface is pure runtime inference rather than model lifecycle governance.
+- tag: Completions
+  spec_file: azure-ai-foundry-completions-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.72
+  evidence: POST /deployments/{deployment-id}/completions — "Create a text completion"; "running inference
+    against models deployed in Microsoft Azure AI Foundry"
+  reason: Single operation that runs text-generation inference against a deployed model — AI model serving,
+    mapped to Artificial Intelligence Management. Thin surface (one operation, no schemas) keeps confidence
+    moderate.
+- tag: Embeddings
+  spec_file: azure-ai-foundry-embeddings-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.72
+  evidence: POST /deployments/{deployment-id}/embeddings — "Create embeddings"; "running inference against
+    models deployed in Microsoft Azure AI Foundry"
+  reason: Generates vector embeddings from a deployed model — AI/ML model inference, mapped to Artificial
+    Intelligence Management. Could equally be read as a data-architecture primitive, so confidence is
+    moderate.
+- tag: Images
+  spec_file: azure-ai-foundry-images-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.7
+  evidence: POST /deployments/{deployment-id}/images/generations  generateImages  Generate images
+  reason: Data-plane inference call against a deployed generative model; closest honest fit is AI/ML model
+    lifecycle and operation under Information & Data Management. Confidence moderate because runtime inference
+    is arguably pure consumption rather than AI management.
