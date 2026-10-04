@@ -96,6 +96,26 @@ paths:
       - apiKey: []
 components:
   schemas:
+    ChatMessage:
+      type: object
+      required:
+      - role
+      properties:
+        role:
+          type: string
+          enum:
+          - system
+          - user
+          - assistant
+          - tool
+          - developer
+        content:
+          type:
+          - string
+          - array
+          - 'null'
+        name:
+          type: string
     ChatCompletionResponse:
       type: object
       properties:
@@ -160,26 +180,6 @@ components:
         frequency_penalty:
           type: number
         user:
-          type: string
-    ChatMessage:
-      type: object
-      required:
-      - role
-      properties:
-        role:
-          type: string
-          enum:
-          - system
-          - user
-          - assistant
-          - tool
-          - developer
-        content:
-          type:
-          - string
-          - array
-          - 'null'
-        name:
           type: string
   securitySchemes:
     apiKey:
