@@ -1,0 +1,25 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-07'
+method: searched
+source: https://azure.microsoft.com/en-us/pricing/details/microsoft-foundry/
+sources:
+- https://azure.microsoft.com/en-us/pricing/details/microsoft-foundry/
+- https://azure.microsoft.com/en-us/pricing/details/ai-foundry/
+provenance:
+  tool: all/0-working/economics/harvest_pricing.py
+  run: 20261007T104522
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: negotiated
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-07'
+published: false
+note: No numeric price is published on the pricing page; Microsoft Foundry pricing hub page lists product
+  categories (Foundry Models, Agent Service, Foundry IQ, Tools, Control Plane, Local) with links to 'See
+  pricing details' but shows no numeric prices on this page; it directs users to request a pricing quote.
+  The Agent pre-purchase plan table shows ACU tiers with prices masked as '$-' and discounts of 5%/10%/15%.
+  Only incidental figures appear ($200 free credit, a $100 illustrative example).
+plan_count: 0
+plans: []
