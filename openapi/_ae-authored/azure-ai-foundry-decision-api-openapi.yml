@@ -1,0 +1,183 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Azure AI Foundry Decision API (Microsoft-Decision-1)
+  version: '1'
+  description: >-
+    GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-12: 1 operation read from 2 public
+    documentation pages (the operation names its page in x-source). This is not Microsoft's published
+    contract; Microsoft has published no machine-readable contract for the decision (systemone) endpoint.
+    Microsoft-Decision-1 makes typed, numerical decisions (noul, choice, score) about a text or JSON
+    state instead of generating prose. Pricing per the Microsoft announcement: $0.042 per million input
+    tokens, output tokens free; base model Qwen3.5-9B.
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-12'
+  x-sources:
+  - https://learn.microsoft.com/en-us/azure/foundry/foundry-models/how-to/use-foundry-models-microsoft-decision
+  - https://commandline.microsoft.com/microsoft-decision-1-model-foundry/
+  x-ae-authored:
+    by: API Evangelist
+    date: '2026-10-12'
+    method: Hand-authored from the Learn how-to (git commit 414c6c21ba6c7fda91deaf6ea3699069db91afe6, updated
+      2026-10-09). Only fields the docs name are modeled.
+    notes:
+    - The docs name answers[<question>].type and answers[<question>].choice; they describe per-option /
+      per-level probabilities, the noul probability and the score value but do not name those fields, so
+      answer objects stay open (additionalProperties true).
+    - The docs say the response carries token usage but do not name the usage fields.
+    - No api-version query parameter is documented.
+servers:
+- url: '{endpoint}'
+  description: Your Foundry resource endpoint, copied from the deployment details page.
+  variables:
+    endpoint:
+      default: https://your-resource.services.ai.azure.com
+security:
+- entraId: []
+- apiKey: []
+tags:
+- name: Decisions
+  description: Typed decisions over one state with Microsoft-Decision-1.
+paths:
+  /providers/microsoft/v1/systemone:
+    post:
+      operationId: createDecision
+      tags:
+      - Decisions
+      summary: Make typed decisions about a state
+      description: >-
+        Send a text or JSON state and one or more named, typed questions. Returns the underlying model
+        name, answers keyed by question name, and token usage.
+      x-source: https://learn.microsoft.com/en-us/azure/foundry/foundry-models/how-to/use-foundry-models-microsoft-decision
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DecisionRequest'
+            example:
+              model: my-decision-deployment
+              state: The API returns 500 on every call.
+              questions:
+                team:
+                  type: choice
+                  instructions: Which team should handle this ticket?
+                  criteria:
+                    billing: Charges, invoices, and refunds
+                    engineering: Bugs, errors, and outages
+                    support: How-to and account questions
+      responses:
+        '200':
+          description: Decisions for each question.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DecisionResponse'
+        '400':
+          description: The request uses an invalid question type or shape.
+        '401':
+          description: The credential is missing, invalid, or expired.
+        '403':
+          description: The identity doesn't have access to the deployment.
+        '404':
+          description: The resource endpoint or API path is incorrect.
+        '422':
+          description: The deployment name or question definition isn't supported.
+        '429':
+          description: The deployment rate limit was exceeded. Retry with exponential backoff.
+components:
+  securitySchemes:
+    entraId:
+      type: oauth2
+      description: Microsoft Entra ID bearer token for scope https://cognitiveservices.azure.com/.default (recommended).
+      flows:
+        clientCredentials:
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes:
+            https://cognitiveservices.azure.com/.default: Access Azure AI services
+    apiKey:
+      type: apiKey
+      in: header
+      name: api-key
+  schemas:
+    DecisionRequest:
+      type: object
+      required:
+      - model
+      - state
+      - questions
+      properties:
+        model:
+          type: string
+          description: Your deployment name, not the underlying model name.
+        state:
+          description: The input to decide about, as text or JSON.
+          oneOf:
+          - type: string
+          - type: object
+        questions:
+          type: object
+          description: One or more questions keyed by name; answers come back under the same names.
+          additionalProperties:
+            $ref: '#/components/schemas/Question'
+    Question:
+      type: object
+      required:
+      - type
+      - instructions
+      properties:
+        type:
+          type: string
+          enum:
+          - noul
+          - choice
+          - score
+          description: noul = probability 0-1 that a condition is true; choice = one option from a fixed set;
+            score = value on an ordered scale.
+        instructions:
+          type: string
+          description: The question to answer about the state.
+        criteria:
+          description: >-
+            noul (optional) - object with "true" and "false" condition descriptions; choice - object mapping
+            option name to description; score - array of levels ordered lowest to highest.
+          oneOf:
+          - type: object
+            additionalProperties:
+              type: string
+          - type: array
+            items:
+              type: string
+    DecisionResponse:
+      type: object
+      properties:
+        model:
+          type: string
+          description: The underlying model (for example microsoft-decision-1), which can differ from the deployment name.
+        answers:
+          type: object
+          description: Answers keyed by the question names from the request.
+          additionalProperties:
+            $ref: '#/components/schemas/Answer'
+        usage:
+          type: object
+          description: Token usage. Field names not documented.
+          additionalProperties: true
+    Answer:
+      type: object
+      additionalProperties: true
+      description: >-
+        noul returns a probability from 0 through 1; choice returns the selected option and a probability
+        for every option; score returns the probability-weighted average of the level indexes and a
+        probability for each level.
+      properties:
+        type:
+          type: string
+          enum:
+          - noul
+          - choice
+          - score
+        choice:
+          type: string
+          description: The selected option (choice questions).
