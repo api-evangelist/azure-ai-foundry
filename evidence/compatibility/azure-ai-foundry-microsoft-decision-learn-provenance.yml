@@ -1,0 +1,11 @@
+fetched: '2026-10-12'
+method: fetched
+source: https://learn.microsoft.com/en-us/azure/foundry/foundry-models/how-to/use-foundry-models-microsoft-decision
+page: https://learn.microsoft.com/en-us/azure/foundry/foundry-models/how-to/use-foundry-models-microsoft-decision
+file: azure-ai-foundry-microsoft-decision-learn.html
+bytes: 71194
+sha256: 8e868afb1832ca9d1f46b5c1a23b0e79dd5929e7f166d0104b9ba04aba876467
+anchor: typesafe-ai
+classification: resemblance-not-compatibility
+quote: The request pattern is similar to a system-one API
+note: Microsoft Learn page HTML, saved verbatim
