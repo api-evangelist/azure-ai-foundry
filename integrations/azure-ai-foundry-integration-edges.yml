@@ -1,0 +1,85 @@
+edges:
+- partner_name: LiteLLM
+  partner: litellm
+  partner_match: router
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json
+  coverage_role:
+  - provider
+  router_signals:
+    provider:
+      models: 147
+      router_ids:
+      - azure_ai
+      tools_share: 0.77
+      structured_output_share: 0.35
+  matched_by: verified-token-table
+  detected_by: sweep-model-routing.py
+  first_seen: '2026-10-13'
+- partner_name: LLM Gateway
+  partner: llmgateway-io
+  partner_match: router
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://api.llmgateway.io/v1/models
+  coverage_role:
+  - provider
+  router_signals:
+    provider:
+      models: 12
+      router_ids:
+      - azure-ai-foundry
+      - azure-anthropic
+      tools_share: 1.0
+      structured_output_share: 1.0
+  matched_by: verified-token-table
+  detected_by: sweep-model-routing.py
+  first_seen: '2026-10-13'
+- partner_name: Portkey
+  partner: portkey
+  partner_match: router
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/Portkey-AI/gateway/tree/main/src/providers/azure-ai-inference
+  coverage_role:
+  - provider
+  router_signals:
+    provider:
+      models: null
+      router_ids:
+      - azure-ai-inference
+  matched_by: verified-token-table
+  detected_by: sweep-model-routing.py
+  first_seen: '2026-10-13'
+- partner_name: OpenAI
+  partner: openai
+  partner_match: domain
+  type: contract
+  channel: provider-built
+  relationship: compatible
+  direction: provider-built
+  evidence: https://github.com/api-evangelist/azure-ai-foundry/blob/main/openapi/azure-ai-foundry-chat-completions-api-openapi.yml#L75
+  contract_reference:
+    repo: azure-ai-foundry
+    spec_file: azure-ai-foundry-chat-completions-api-openapi.yml
+    property: description
+    value: OpenAI-compatible
+    note: 'azure-ai-foundry declares OpenAI compatibility: ''description: ''OpenAI-compatible route. The model deployment
+      is selected by the `model`'''
+    detected_by: sweep-model-routing.py
+    detected: '2026-10-13'
+  detected_by: sweep-model-routing.py
+  first_seen: '2026-10-13'
+generated: '2026-10-13'
+method: searched
+checked:
+- https://api.llmgateway.io/v1/models
+- https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json
+- https://github.com/Portkey-AI/gateway/tree/main/src/providers
