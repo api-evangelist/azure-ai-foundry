@@ -11,10 +11,10 @@ edges:
   - provider
   router_signals:
     provider:
-      models: 147
+      models: 148
       router_ids:
       - azure_ai
-      tools_share: 0.77
+      tools_share: 0.78
       structured_output_share: 0.35
   matched_by: verified-token-table
   detected_by: sweep-model-routing.py
