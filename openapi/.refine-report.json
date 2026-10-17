@@ -2,6 +2,7 @@
   "provider": "azure-ai-foundry",
   "sources": [
     "_original/azure-ai-foundry-openapi.yml",
+    "_ae-authored/azure-ai-foundry-decision-api-openapi.yml",
     "azure-ai-foundry-operations-api-openapi.yml",
     "azure-ai-foundry-workspaces-api-openapi.yml"
   ],
@@ -11,6 +12,7 @@
     "azure-ai-foundry-embeddings-api-openapi.yml",
     "azure-ai-foundry-images-api-openapi.yml",
     "azure-ai-foundry-models-api-openapi.yml",
+    "azure-ai-foundry-decisions-api-openapi.yml",
     "azure-ai-foundry-operations-api-openapi.yml",
     "azure-ai-foundry-workspaces-api-openapi.yml"
   ],
@@ -23,7 +25,8 @@
   "notes": [
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "azure-ai-foundry-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "azure-ai-foundry-decision-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: written (+1 apis, 9 total)"
   ],
   "skipped": [
     "azure-ai-foundry-chat-completions-api-openapi.yml: previously refined output, superseded by openapi/_original/",

@@ -96,6 +96,40 @@ paths:
       - apiKey: []
 components:
   schemas:
+    ChatCompletionRequest:
+      type: object
+      required:
+      - messages
+      properties:
+        model:
+          type: string
+          description: Deployment name (for v1 route)
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatMessage'
+        temperature:
+          type: number
+        top_p:
+          type: number
+        n:
+          type: integer
+        stream:
+          type: boolean
+        max_tokens:
+          type: integer
+        max_completion_tokens:
+          type: integer
+        stop:
+          type:
+          - string
+          - array
+        presence_penalty:
+          type: number
+        frequency_penalty:
+          type: number
+        user:
+          type: string
     ChatMessage:
       type: object
       required:
@@ -147,40 +181,6 @@ components:
               type: integer
             total_tokens:
               type: integer
-    ChatCompletionRequest:
-      type: object
-      required:
-      - messages
-      properties:
-        model:
-          type: string
-          description: Deployment name (for v1 route)
-        messages:
-          type: array
-          items:
-            $ref: '#/components/schemas/ChatMessage'
-        temperature:
-          type: number
-        top_p:
-          type: number
-        n:
-          type: integer
-        stream:
-          type: boolean
-        max_tokens:
-          type: integer
-        max_completion_tokens:
-          type: integer
-        stop:
-          type:
-          - string
-          - array
-        presence_penalty:
-          type: number
-        frequency_penalty:
-          type: number
-        user:
-          type: string
   securitySchemes:
     apiKey:
       type: apiKey

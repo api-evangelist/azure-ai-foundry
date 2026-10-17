@@ -53,7 +53,10 @@ specificationVersion: '0.23'
 apis:
 - aid: azure-ai-foundry:foundry-api
   name: Azure AI Foundry REST API
-  description: REST API for managing Foundry projects, hubs, model deployments, agents, threads, runs, and evaluations. Authentication uses Microsoft Entra ID OAuth 2.0 bearer tokens (or API keys for inference endpoints) over HTTPS.
+  description: >-
+    REST API for managing Foundry projects, hubs, model deployments, agents, threads, runs, and evaluations.
+    Authentication uses Microsoft Entra ID OAuth 2.0 bearer tokens (or API keys for inference endpoints)
+    over HTTPS.
   humanURL: https://learn.microsoft.com/en-us/azure/ai-foundry/
   baseURL: https://{your-resource-name}.services.ai.azure.com
   tags:
@@ -71,23 +74,6 @@ apis:
     url: https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/develop/sdk-overview
   - type: Portal
     url: https://ai.azure.com/
-- aid: azure-ai-foundry:azure-ai-foundry-decision-api
-  name: Microsoft Azure AI Foundry Decision API
-  description: Microsoft-Decision-1 decision endpoint (POST /providers/microsoft/v1/systemone) — typed noul, choice and score answers about a text or JSON state, returning probabilities instead of generated prose. $0.042 per million input tokens, output free; based on Qwen3.5-9B.
-  humanURL: https://learn.microsoft.com/en-us/azure/foundry/foundry-models/how-to/use-foundry-models-microsoft-decision
-  baseURL: https://{your-resource-name}.services.ai.azure.com
-  tags:
-  - Decisions
-  - Decision Models
-  - AI Foundry
-  properties:
-  - type: OpenAPI
-    url: openapi/_ae-authored/azure-ai-foundry-decision-api-openapi.yml
-    description: AE-generated from Microsoft's documentation (x-generated-from documentation); Microsoft publishes no contract for this endpoint.
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/azure/foundry/foundry-models/how-to/use-foundry-models-microsoft-decision
-  - type: Blog
-    url: https://commandline.microsoft.com/microsoft-decision-1-model-foundry/
 - aid: azure-ai-foundry:azure-ai-foundry-chat-completions-api
   name: Microsoft Azure AI Foundry Chat Completions API
   description: Chat-formatted text generation
@@ -179,6 +165,21 @@ apis:
     url: https://learn.microsoft.com/en-us/azure/ai-foundry/concepts/rbac-azure-ai-foundry
   - type: SDKs
     url: https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/ai
+- aid: azure-ai-foundry:azure-ai-foundry-decisions-api
+  name: Microsoft Azure AI Foundry Decisions API
+  description: Typed decisions over one state with Microsoft-Decision-1.
+  humanURL: https://learn.microsoft.com/en-us/azure/ai-foundry/
+  baseURL: https://{your-resource-name}.services.ai.azure.com
+  tags:
+  - Decisions
+  properties:
+  - type: OpenAPI
+    url: openapi/azure-ai-foundry-decisions-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/azure/foundry/foundry-models/how-to/use-foundry-models-microsoft-decision
+  - type: Blog
+    url: https://commandline.microsoft.com/microsoft-decision-1-model-foundry/
 common:
 - type: Plans
   url: plans/azure-ai-foundry-plans-pricing.yml
