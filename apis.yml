@@ -34,7 +34,7 @@ tags:
 - Foundation Models
 - Machine Learning
 - Cloud
-- Azure
+- Microsoft Azure
 - A2A
 tags_raw:
 - Artificial Intelligence
@@ -60,6 +60,12 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/azure/ai-foundry/
   baseURL: https://{your-resource-name}.services.ai.azure.com
   tags:
+  - AI Foundry
+  - Agents
+  - Models
+  - Generative AI
+  - Microsoft Azure
+  tags_raw:
   - AI Foundry
   - Agents
   - Models
